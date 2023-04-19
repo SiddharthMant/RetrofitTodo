@@ -2,6 +2,7 @@ package com.example.retrofittodo
 
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface TodoApi {
     // Network Model Class (A data class) shows what the response looks like
@@ -12,5 +13,8 @@ interface TodoApi {
     // Put query parameters as parameters to function
 
     @GET("/todos")
-    suspend fun getTodos() : Response<List<Todo>>
+    suspend fun getTodos(@Query("userId") userId: Int?) : Response<List<Todo>>
+
+    @GET("/users")
+    suspend fun getUsers() : Response<List<User>>;
 }
